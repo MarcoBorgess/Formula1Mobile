@@ -22,8 +22,8 @@ Future<Races> fetchRaces() async {
 Future<String> calcRaces() async {
   final races = await fetchRaces();
 
-  if (races.season == null) {
-    return 'Carregou';
+  if (races.toString().isNotEmpty) {
+    return races.toString();
   } else {
     throw Exception('Falha ao carregar as corrdias');
   }
@@ -69,25 +69,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Welcome to Flutter',
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Vamo F1?',
-            style: TextStyle(
-              color: Colors.red,
-            ),
-          ),
-          backgroundColor: Colors.white,
-        ),
         body: Center(
           child: FutureBuilder<String>(
             future: futureRace,
             builder: (context, snapshot) {
-              var data = snapshot.data.toString();
-              return Text('Prox: $data');
+              return const Text(
+                'oi',
+                style: TextStyle(color: Colors.white),
+              );
             },
           ),
         ),
-        // backgroundColor: const Color.fromARGB(19, 21, 22, 1),
+        backgroundColor: const Color.fromARGB(19, 21, 22, 1),
       ),
     );
   }
