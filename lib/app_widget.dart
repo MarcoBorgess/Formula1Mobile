@@ -1,4 +1,5 @@
 import 'package:first_app/app_controller.dart';
+import 'package:first_app/home_widget.dart';
 import 'package:first_app/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,11 @@ class App extends StatelessWidget {
             primarySwatch: Colors.red,
             brightness: AppController.instance.getBrightness(),
           ),
-          home: LoginPage(),
+          initialRoute: '/',
+          routes: {
+            '/': (context) => LoginPage(),
+            '/home': (context) => HomePage(),
+          },
         );
       },
     );

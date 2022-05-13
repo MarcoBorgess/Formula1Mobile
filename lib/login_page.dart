@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:first_app/app_controller.dart';
 import 'package:flutter/material.dart';
 
 import 'home_widget.dart';
@@ -13,6 +12,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String email = '';
+  String senha = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +31,7 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
+              onChanged: (value) => email = value,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 label: Text(
@@ -45,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
+              onChanged: (value) => senha = value,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 label: Text(
@@ -58,6 +61,15 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
             ),
           ),
+          ElevatedButton(
+              onPressed: () {
+                if (email == 'abc@gmail.com' && senha == '12345') {
+                  Navigator.of(context).pushReplacementNamed('/home');
+                } else {
+                  print('login invalido');
+                }
+              },
+              child: Text('Entrar'))
         ],
       ),
     );
