@@ -1,8 +1,5 @@
-import 'dart:ui';
-
-import 'package:first_app/app_controller.dart';
-import 'package:first_app/app_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:first_app/app_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +20,9 @@ class HomePageState extends State<HomePage> {
         title: const Text(
           'Vamo F1?',
         ),
-        centerTitle: true,
+        actions: [
+          CustomSwitch(),
+        ],
       ),
       body: Center(
         child: Text(
@@ -46,12 +45,6 @@ class HomePageState extends State<HomePage> {
                 });
               },
             ),
-            Switch(
-              value: AppController.instance.isDark,
-              onChanged: (value) {
-                AppController.instance.changeTheme();
-              },
-            ),
             FloatingActionButton(
               child: const Icon(Icons.add),
               onPressed: () {
@@ -64,6 +57,20 @@ class HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
+  }
+}
+
+class CustomSwitch extends StatelessWidget {
+  const CustomSwitch({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+      value: AppController.instance.isDark,
+      onChanged: (value) {
+        AppController.instance.changeTheme();
+      },
     );
   }
 }
