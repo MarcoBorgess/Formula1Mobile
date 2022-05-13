@@ -1,4 +1,5 @@
 import 'package:first_app/app_controller.dart';
+import 'package:first_app/colors_swatch.dart';
 import 'package:first_app/home_widget.dart';
 import 'package:first_app/login_page.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class App extends StatelessWidget {
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
           theme: ThemeData(
-            primarySwatch: Colors.red,
+            primarySwatch: redCustom,
             brightness: AppController.instance.getBrightness(),
           ),
           initialRoute: '/',

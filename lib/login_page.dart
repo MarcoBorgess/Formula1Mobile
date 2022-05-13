@@ -25,52 +25,64 @@ class _LoginPageState extends State<LoginPage> {
           CustomSwitch(),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              onChanged: (value) => email = value,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                label: Text(
-                  'Email',
-                  style: TextStyle(
-                    fontSize: 21,
-                  ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SizedBox(
+                  height: 64,
+                  width: 256,
+                  child: Image.network(
+                      'https://logodownload.org/wp-content/uploads/2016/11/formula-1-logo-5-3.png'),
                 ),
               ),
-              keyboardType: TextInputType.emailAddress,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              onChanged: (value) => senha = value,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                label: Text(
-                  'Senha',
-                  style: TextStyle(
-                    fontSize: 21,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextField(
+                  onChanged: (value) => email = value,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    label: Text(
+                      'Email',
+                      style: TextStyle(
+                        fontSize: 21,
+                      ),
+                    ),
                   ),
+                  keyboardType: TextInputType.emailAddress,
                 ),
               ),
-              keyboardType: TextInputType.visiblePassword,
-              obscureText: true,
-            ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextField(
+                  onChanged: (value) => senha = value,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    label: Text(
+                      'Senha',
+                      style: TextStyle(
+                        fontSize: 21,
+                      ),
+                    ),
+                  ),
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                ),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    if (email == 'abc@gmail.com' && senha == '12345') {
+                      Navigator.of(context).pushReplacementNamed('/home');
+                    } else {
+                      print('login invalido');
+                    }
+                  },
+                  child: Text('Entrar'))
+            ],
           ),
-          ElevatedButton(
-              onPressed: () {
-                if (email == 'abc@gmail.com' && senha == '12345') {
-                  Navigator.of(context).pushReplacementNamed('/home');
-                } else {
-                  print('login invalido');
-                }
-              },
-              child: Text('Entrar'))
-        ],
+        ),
       ),
     );
   }

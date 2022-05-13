@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:first_app/app_controller.dart';
 
@@ -12,10 +14,56 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   int counter = 0;
+  String email = 'abc@gmail.com';
+  String name = 'Marco Borges';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.8,
+        child: Drawer(
+          child: Column(
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text(
+                  name,
+                ),
+                accountEmail: Text(
+                  email,
+                ),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    'https://www.personality-insights.com/wp-content/uploads/2017/12/default-profile-pic-e1513291410505.jpg',
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                ),
+                title: Text(
+                  'Página Inicial',
+                ),
+                onTap: () => {
+                  Navigator.of(context).pushReplacementNamed('/home'),
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.logout,
+                ),
+                title: Text(
+                  'Sair',
+                ),
+                onTap: () => {
+                  Navigator.of(context).pushReplacementNamed('/'),
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       appBar: AppBar(
         title: const Text(
           'Vamo F1?',
