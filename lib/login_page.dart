@@ -73,10 +73,11 @@ class _LoginPageState extends State<LoginPage> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    if (email == 'abc@gmail.com' && senha == '12345') {
+                    if (true) {
+                      //TODO: Credential verification
                       Navigator.of(context).pushReplacementNamed('/home');
                     } else {
-                      print('login invalido');
+                      //TODO: Wrong credentials notification
                     }
                   },
                   child: Text('Entrar'))
